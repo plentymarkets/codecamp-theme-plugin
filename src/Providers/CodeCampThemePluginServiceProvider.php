@@ -4,7 +4,6 @@ namespace CodeCampThemePlugin\Providers;
 
 use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
-use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
 
 class CodeCampThemePluginServiceProvider extends ServiceProvider

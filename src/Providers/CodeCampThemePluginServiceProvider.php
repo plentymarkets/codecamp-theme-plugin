@@ -7,6 +7,7 @@ use Plenty\Plugin\Events\Dispatcher;
 use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
 use CodeCampThemePlugin\Providers\CodeCampThemePluginRouteServiceProvider;
+use IO\Helper\ComponentContainer;
 
 class CodeCampThemePluginServiceProvider extends ServiceProvider
 {
@@ -39,6 +40,14 @@ class CodeCampThemePluginServiceProvider extends ServiceProvider
         $eventDispatcher->listen('IO.init.templates', function (Partial $partial) {
             $partial->set('header', 'CodeCampThemePlugin::PageDesign.Partials.Header');
             $partial->set('footer', 'CodeCampThemePlugin::PageDesign.Partials.Footer');
+        }, self::EVENT_LISTENER_PRIORITY);
+
+        $eventDispatcher->listen('IO.Component.Import', function(ComponentContainer $componentContainer)
+        {
+            if($componentContainer->getOriginComponentTemplate() == 'Ceres::Customer.Components.AddressInputGroup')
+            {
+                $componentContainer->setNewComponentTemplate('TwigPath');
+            }
         }, self::EVENT_LISTENER_PRIORITY);
     }
 }

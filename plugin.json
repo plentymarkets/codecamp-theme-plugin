@@ -10,11 +10,5 @@
   "namespace"         : "CodeCampThemePlugin",
   "serviceProvider"   : "CodeCampThemePlugin\\Providers\\CodeCampThemePluginServiceProvider",
   "javaScriptFiles"   : [],
-  "dataProviders"     : [
-    {
-      "key":"CodeCampThemePlugin\\Containers\\CodeCampThemePluginCssExtend",
-      "name":"CSS",
-      "description":"Extend CSS"
-    }
-  ]
+  "dataProviders"     : []
 }

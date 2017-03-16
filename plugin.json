@@ -1,0 +1,20 @@
+{
+  "version"           : "1.0.0",
+  "name"              : "CodeCampThemePlugin",
+  "description"       : "plentymarkets plugin for code camp theming.",
+  "author"            : "plentymarkets GmbH",
+  "license"           : "AGPL-3.0",
+  "keywords"          : ["plentymarkets", "plugins", "layout", "widget"],
+  "type"              : "template",
+  "require"           : [],
+  "namespace"         : "CodeCampThemePlugin",
+  "serviceProvider"   : "CodeCampThemePlugin\\Providers\\CodeCampThemePluginServiceProvider",
+  "javaScriptFiles"   : [],
+  "dataProviders"     : [
+    {
+      "key":"CodeCampThemePlugin\\Containers\\CodeCampThemePluginCssExtend",
+      "name":"CSS",
+      "description":"Extend CSS"
+    }
+  ]
+}

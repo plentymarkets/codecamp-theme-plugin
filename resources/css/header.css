@@ -1,0 +1,12 @@
+.top-bar {
+    background-color: red;
+}
+
+.top-bar .controls-list {
+    width: 100%;
+    display: block;
+}
+
+.top-bar .controls-list .control-basket {
+    float: right;
+}

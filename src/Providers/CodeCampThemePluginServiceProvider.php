@@ -4,8 +4,8 @@ namespace CodeCampThemePlugin\Providers;
 
 use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
-use Plenty\Plugin\Templates\Twig;
 use IO\Helper\TemplateContainer;
+use IO\Extensions\Functions\Partial;
 
 class CodeCampThemePluginServiceProvider extends ServiceProvider
 {
@@ -23,6 +23,10 @@ class CodeCampThemePluginServiceProvider extends ServiceProvider
             $templateContainer->setTemplate('CodeCampThemePlugin::content.CodeCampThemePluginBasket');
 
             return false;
+        }, self::EVENT_LISTENER_PRIORITY);
+
+        $eventDispatcher->listen('IO.init.templates', function (Partial $partial) {
+            $partial->set('header', 'CodeCampThemePlugin::PageDesign.Partials.Header');
         }, self::EVENT_LISTENER_PRIORITY);
     }
 }

@@ -6,6 +6,7 @@ use Plenty\Plugin\ServiceProvider;
 use Plenty\Plugin\Events\Dispatcher;
 use IO\Helper\TemplateContainer;
 use IO\Extensions\Functions\Partial;
+use CodeCampThemePlugin\Providers\CodeCampThemePluginRouteServiceProvider;
 
 class CodeCampThemePluginServiceProvider extends ServiceProvider
 {
@@ -14,7 +15,10 @@ class CodeCampThemePluginServiceProvider extends ServiceProvider
     /**
      * Register the service provider.
      */
-    public function register() {}
+    public function register()
+    {
+        $this->getApplication()->register(CodeCampThemePluginRouteServiceProvider::class);
+    }
 
     public function boot(Dispatcher $eventDispatcher)
     {
@@ -25,8 +29,16 @@ class CodeCampThemePluginServiceProvider extends ServiceProvider
             return false;
         }, self::EVENT_LISTENER_PRIORITY);
 
+        $eventDispatcher->listen('IO.tpl.contact', function (TemplateContainer $templateContainer)
+        {
+            $templateContainer->setTemplate('CodeCampThemePlugin::content.CodeCampThemePluginContact');
+
+            return false;
+        }, self::EVENT_LISTENER_PRIORITY);
+
         $eventDispatcher->listen('IO.init.templates', function (Partial $partial) {
             $partial->set('header', 'CodeCampThemePlugin::PageDesign.Partials.Header');
+            $partial->set('footer', 'CodeCampThemePlugin::PageDesign.Partials.Footer');
         }, self::EVENT_LISTENER_PRIORITY);
     }
 }

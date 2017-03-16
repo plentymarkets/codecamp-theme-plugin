@@ -16,13 +16,5 @@
       "name":"CSS",
       "description":"Extend CSS"
     }
-  ],
-  "containers"        :
-  [
-    {
-      "key"           : "Codecamp.Test",
-      "name"          : "Codecamp: Container",
-      "description"   : "New container only in my theme"
-    }
   ]
 }

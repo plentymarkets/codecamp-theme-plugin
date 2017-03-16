@@ -3,7 +3,7 @@
 {{ component( "Ceres::Customer.Components.UserLoginHandler" ) }}
 {{ component( "Ceres::PageDesign.Components.ShippingCountrySelect" ) }}
 {{ component( "Ceres::PageDesign.Components.ShopLanguageSelect" ) }}
-{{ component( "Ceres::ItemList.Components.ItemSearch" ) }}
+{{ component( "CodeCampThemePlugin::Components.ItemSearch" ) }}
 
 {% set lang = services.sessionStorage.getLang() %}
 
@@ -17,6 +17,16 @@
                 <li class="list-inline-item control-user">
                     <user-login-handler template="#vue-user-login-handler"
                                         :user-data="{{ services.customer.getContact() | json_encode() }}"></user-login-handler>
+                </li>
+
+                <li class="list-inline-item control-search">
+                    <a class="" data-toggle="collapse" href="#searchBox"
+                       aria-expanded="{% if services.template.isSearch() %}true{% else %}false{% endif %}"
+                       aria-controls="searchBox"
+                       data-parent="#controlsList">
+                        <i class="fa fa-search"></i>
+                        <span class="hidden-xs-down">{{ trans("Ceres::Template.generalSearchNoDot") }}</span>
+                    </a>
                 </li>
 
                 <li>ICH BIN IM HEADER</li>
